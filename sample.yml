@@ -1,5 +1,5 @@
-
-sts: all
+---
+hosts: all
   tasks:
   - name:
     copy:
