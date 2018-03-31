@@ -1,0 +1,30 @@
+
+sts: all
+  tasks:
+  - name:
+    copy:
+      src: /etc/test.txt
+      dest: /etc/test.txt
+      owner: root
+      group: root
+      mode: u=rw,g=r,o=r
+  - name: file existence
+    stat:
+      path: /etc/test.txt
+    register: sym
+
+  - debug:
+      msg: "islnk isn't defined (path doesn't exist)"
+    when: sym.stat.islnk is not defined
+
+  - debug:
+      msg: "islnk is defined (path must exist)"
+    when: sym.stat.islnk is defined
+
+  - debug:
+      msg: "Path exists and is a symlink"
+    when: sym.stat.islnk is defined and sym.stat.islnk
+
+  - debug:
+      msg: "Path exists and isn't a symlink"
+    when: sym.stat.islnk is defined and sym.stat.islnk == False

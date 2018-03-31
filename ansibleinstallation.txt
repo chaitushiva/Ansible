@@ -1,0 +1,24 @@
+### On RHEL 7 we can install ansible
+
+yum update && yum upgrade
+
+yum install net-tools
+yum install wget
+
+wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+rpm -ivh epel-release-latest-7.noarch.rpm
+yum install epel-release
+
+sudo yum install python
+
+sudo yum install python-pip
+
+sudo pip install --upgrade pip
+sudo yum install ansible
+
+ansible --version
+
+
+#config file = /etc/ansible/ansible.cfg
+
+

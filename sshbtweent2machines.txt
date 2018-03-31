@@ -1,0 +1,39 @@
+llow Root Logins on All Nodes
+
+Log into each of your nodes as the root user, one at a time, and perform the following steps:
+
+1. Change the password of the root account to “Anything you like”. Ignore any cautions about the password
+strength.
+
+# passwd
+
+I have already done this so will not do it.
+
+2. Copy the /etc/ssh/sshd_config file to sshd_config.bak, and then edit the file:
+
+# cp /etc/ssh/sshd_config /etc/ssh/sshd_config.bak
+# vi /etc/ssh/sshd_config
+
+3. In the /etc/ssh/sshd_config file, comment or uncomment lines to match what is below:
+
+PermitRootLogin yes (uncomment line, set to “yes”)
+PasswordAuthentication yes (uncomment line, set to “yes”)
+
+If the file also contains either of these lines, delete them or comment them out:
+
+PermitRootLogin no
+PasswordAuthentication no
+
+4. Save the file, and run this command:
+
+# sshd –t
+
+If no output is returned, proceed. If there are any errors, correct them before continuing.
+
+5. Restart the sshd service:
+# service sshd restart
+
+------------------------------------------------------------------------------------------------
+git permission denied publickey 
+amazon aws login 
+ssh permission denied publickey
